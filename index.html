@@ -115,7 +115,8 @@ a { color: inherit; text-decoration: none; }
 .section-label.no-line::after { display: none; }
 
 /* ── HERO ── */
-.hero { padding: 64px 0 40px; }
+.hero { 
+  padding: 64px 0 0px; }
 
 .hero-name {
   font-family: var(--serif);
@@ -232,6 +233,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 48px;
   overflow: hidden;
   position: relative;
+  max-width: calc(100% - 292px);
 }
 .marquee-section::before,
 .marquee-section::after {
@@ -757,6 +759,265 @@ body.splash-active { overflow: hidden; }
   .cv-role-date { text-align: left; }
 }
 
+/* ── WRITING PAGE ── */
+#writing-page {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#writing-page.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.writing-page-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+}
+
+/* Featured post */
+.writing-featured {
+  display: block;
+  padding: 36px 0 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: opacity 0.2s;
+}
+.writing-featured:hover { opacity: 0.75; }
+
+.writing-featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.writing-featured-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+.writing-featured-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+}
+.writing-featured-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.writing-featured-desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  max-width: 580px;
+  margin-bottom: 18px;
+}
+.writing-featured-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.writing-tag-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  border: 1px solid var(--border-mid);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* Post list */
+.writing-list {
+  display: flex;
+  flex-direction: column;
+}
+.writing-list-item {
+  display: block;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--ink);
+  transition: opacity 0.2s;
+}
+.writing-list-item:hover { opacity: 0.65; }
+.writing-list-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.writing-list-item-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+}
+.writing-list-item-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.writing-list-item-excerpt {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-dim);
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+.writing-list-item-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── HERO LINK BUTTONS ── */
+.hero-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-link-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  background: none;
+  border: 1px solid var(--border-mid);
+  border-radius: 5px;
+  padding: 5px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+}
+.hero-link-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--ink-dim);
+  color: var(--ink);
+}
+
+/* ── HAMBURGER (mobile only) ── */
+.hero-link-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid var(--border-mid);
+  border-radius: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.hero-link-hamburger:hover { background: var(--bg-card); border-color: var(--ink-dim); }
+.hero-link-hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--ink-mid);
+  border-radius: 2px;
+}
+
+/* ── MOBILE MENU ── */
+.hero-link-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 160px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  z-index: 200;
+}
+.hero-link-menu.open { display: flex; }
+.hero-links { position: relative; }
+.hero-menu-item {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  background: none;
+  border: none;
+  border-radius: 5px;
+  padding: 9px 14px;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  display: block;
+  width: 100%;
+}
+.hero-menu-item:hover { background: var(--bg-card); color: var(--ink); }
+
+/* ── CV / WRITING PAGE INLINE LINKS ── */
+.page-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.page-link-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  background: none;
+  border: 1px solid var(--border-mid);
+  border-radius: 5px;
+  padding: 5px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.page-link-btn:hover { background: var(--bg-card); border-color: var(--ink-dim); color: var(--ink); }
+.page-link-btn svg { width: 12px; height: 12px; }
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .page { padding: 0 20px; }
+  .hero-body { flex-direction: column; }
+  .hero-photo { display: none; }
+  .hero-link-btn { display: none; }
+  .hero-link-hamburger { display: flex; }
+}
+
   </style>
 </head>
 <body class="splash-active">
@@ -781,12 +1042,13 @@ body.splash-active { overflow: hidden; }
   <div id="cv-page">
     <div class="cv-wrap">
 
-      <button class="cv-back" id="cv-back">
-        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Back
-      </button>
+      <div class="page-links">
+        <button class="page-link-btn" id="cv-back">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2L4 7l9 12"/></svg>
+          Home
+        </button>
+        <button class="page-link-btn" id="cv-to-writing">Writing</button>
+      </div>
 
       <div class="cv-header">
         <h1>Suliman Khan</h1>
@@ -893,13 +1155,74 @@ body.splash-active { overflow: hidden; }
     </div>
   </div>
 
+  <!-- WRITING PAGE -->
+<div id="writing-page">
+  <div class="writing-page-wrap">
+
+      <div class="page-links">
+        <button class="page-link-btn" id="writing-back">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2L4 7l9 12"/></svg>
+          Home
+        </button>
+        <button class="page-link-btn" id="writing-to-cv">CV</button>
+      </div>
+
+    <div class="section-label no-line" style="margin-bottom: 0;">Writing</div>
+
+    <!-- Featured post -->
+    <a class="writing-featured" href="https://hippodigital.co.uk/insights/from-guesswork-to-great-design-the-power-of-design-decision-tracking/" target="_blank" rel="noopener">
+      <div class="writing-featured-meta">
+        <span class="writing-featured-label">Latest</span>
+        <span class="writing-featured-date">Hippo Digital · 2024</span>
+      </div>
+      <h2 class="writing-featured-title">From guesswork to great design: the power of design decision tracking</h2>
+      <p class="writing-featured-desc">How better design decision tracking empowers teams to communicate, clarify, validate, and improve choices over time — and why it matters for public service delivery.</p>
+      <div class="writing-featured-tags">
+        <span class="writing-tag-pill">Design Systems</span>
+        <span class="writing-tag-pill">Public Services</span>
+        <span class="writing-tag-pill">Co-authored</span>
+      </div>
+    </a>
+
+    <!-- Post list -->
+    <div class="writing-list">
+
+      <a class="writing-list-item" href="#" target="_blank" rel="noopener">
+        <div class="writing-list-item-meta">
+          <span class="writing-list-item-date">2023</span>
+          <span class="writing-tag-pill">Research</span>
+          <span class="writing-tag-pill">NHS</span>
+        </div>
+        <div class="writing-list-item-title">Designing for trust in healthcare digital services</div>
+        <div class="writing-list-item-excerpt">What happens when you ask patients what they actually need from a digital service — and they tell you something completely different.</div>
+      </a>
+
+      <a class="writing-list-item" href="#" target="_blank" rel="noopener">
+        <div class="writing-list-item-meta">
+          <span class="writing-list-item-date">2022</span>
+          <span class="writing-tag-pill">Strategy</span>
+          <span class="writing-tag-pill">GDS</span>
+        </div>
+        <div class="writing-list-item-title">Why most design ops transformations stall at the same point</div>
+        <div class="writing-list-item-excerpt">A pattern I've seen repeat itself across three government departments — and the single question that unlocks it.</div>
+      </a>
+
+      <a class="writing-list-item" href="#" target="_blank" rel="noopener">
+        <div class="writing-list-item-meta">
+          <span class="writing-list-item-date">2021</span>
+          <span class="writing-tag-pill">Leadership</span>
+          <span class="writing-tag-pill">Teams</span>
+        </div>
+        <div class="writing-list-item-title">What makes a senior designer actually senior</div>
+        <div class="writing-list-item-excerpt">It's not the craft. It's knowing when to stop designing and start asking better questions.</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
   <!-- PAGE -->
   <div class="page-content">
-
-    <nav class="nav" id="nav">
-      <span class="nav-name">Suliman Khan</span>
-      <a href="/cdn-cgi/l/email-protection#4734322b3e2c2f262969323f07202a262e2b6924282a" class="nav-cta">Get in touch</a>
-    </nav>
 
     <div class="page">
       <section class="hero">
@@ -907,8 +1230,19 @@ body.splash-active { overflow: hidden; }
         <p class="hero-name fade-up" id="hero-name-el">Suliman Khan</p>
 
         <div class="hero-links fade-up" id="hero-links-el">
-          <a href="/cdn-cgi/l/email-protection#2152544d584a49404f0f545961464c40484d0f424e4c"><span class="__cf_email__" data-cfemail="255650495c4e4d444b0b505d654248444c490b464a48">[email&#160;protected]</span></a>
-          <a href="https://linkedin.com/in/sulimank" target="_blank">LinkedIn</a>
+          <a href="/cdn-cgi/l/email-protection#2152544d584a49404f0f545961464c40484d0f424e4c" class="hero-link-btn"><span class="__cf_email__" data-cfemail="255650495c4e4d444b0b505d654248444c490b464a48">[email&#160;protected]</span></a>
+          <a href="https://linkedin.com/in/sulimank" target="_blank" class="hero-link-btn">LinkedIn</a>
+          <button class="hero-link-btn" id="nav-writing">Writing</button>
+          <button class="hero-link-btn" id="nav-cv">CV</button>
+          <button class="hero-link-hamburger" id="hero-hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="hero-link-menu" id="hero-menu">
+            <a href="/cdn-cgi/l/email-protection#2152544d584a49404f0f545961464c40484d0f424e4c" class="hero-menu-item"><span class="__cf_email__" data-cfemail="255650495c4e4d444b0b505d654248444c490b464a48">[email&#160;protected]</span></a>
+            <a href="https://linkedin.com/in/sulimank" target="_blank" class="hero-menu-item">LinkedIn</a>
+            <button class="hero-menu-item" id="nav-writing-mob">Writing</button>
+            <button class="hero-menu-item" id="nav-cv-mob">CV</button>
+          </div>
         </div>
 
         <div class="hero-body" id="hero-body">
@@ -946,23 +1280,6 @@ body.splash-active { overflow: hidden; }
       </div>
     </div>
 
-    <div class="page">
-      <section id="writing" class="writing fade-up" id="writing-el">
-        <div class="section-label no-line">Writing</div>
-        <div class="writing-grid">
-          <a class="writing-card" href="https://hippodigital.co.uk/insights/from-guesswork-to-great-design-the-power-of-design-decision-tracking/" target="_blank" rel="noopener">
-            <div class="writing-card-meta">
-              <span class="writing-tag">Co-authored</span>
-              <span class="writing-date">Hippo Digital · 2024</span>
-            </div>
-            <h3 class="writing-card-title">From guesswork to great design: the power of design decision tracking</h3>
-            <p class="writing-card-desc">How better design decision tracking empowers teams to communicate, clarify, validate, and improve choices over time — and why it matters for public service delivery.</p>
-            <span class="writing-card-link">Read on Hippo Digital ↗</span>
-          </a>
-        </div>
-      </section>
-    </div>
-
   </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -978,6 +1295,7 @@ body.splash-active { overflow: hidden; }
   var pageContent = document.querySelector('.page-content');
   var cvPage      = document.getElementById('cv-page');
   var cvBack      = document.getElementById('cv-back');
+  var cvToWriting = document.getElementById('cv-to-writing');
 
   /* Safety net — show content after 4s if anything goes wrong */
   var safetyTimer = setTimeout(function () {
@@ -1090,7 +1408,7 @@ body.splash-active { overflow: hidden; }
           last && last.width > 0 && last.height > 0
         );
 
-        if (!canFLIP) {
+          if (!canFLIP) {
           /* No FLIP — just reveal */
           onboarding.style.transition = 'opacity 0.45s ease';
           onboarding.style.opacity    = '0';
@@ -1098,8 +1416,9 @@ body.splash-active { overflow: hidden; }
             if (onboarding.parentNode) onboarding.parentNode.removeChild(onboarding);
             pageContent.classList.add('ready');
             void pageContent.offsetWidth;
-            if (key === 'hire') { cvPage.classList.add('visible'); }
-            else { doStagger(); }
+            if (key === 'hire') { cvPage.classList.add('visible'); setNavState('cv'); showNav(); }
+            else if (key === 'writing') { document.getElementById('writing-page').classList.add('visible'); setNavState('writing'); showNav(); }
+            else { setNavState('home'); doStagger(); }
           }, 480);
           return;
         }
@@ -1184,7 +1503,9 @@ body.splash-active { overflow: hidden; }
 
               if (key === 'hire') {
                 cvPage.classList.add('visible');
+                setNavState('cv');
               } else {
+                setNavState('home');
                 /* Unhide hero photo where clone just was, then stagger everything in */
                 heroImg.classList.remove('flip-pending');
                 doStagger();
@@ -1199,19 +1520,56 @@ body.splash-active { overflow: hidden; }
     });
   });
 
-  /* ── CV BACK BUTTON ── */
-  if (cvBack) {
-    cvBack.addEventListener('click', function () {
-      cvPage.style.transition = 'opacity 0.5s ease';
-      cvPage.style.opacity    = '0';
-      setTimeout(function () {
-        cvPage.style.pointerEvents = 'none';
-        var heroImg = document.querySelector('.hero-photo img');
-        if (heroImg) heroImg.classList.remove('flip-pending');
-        pageContent.classList.add('ready');
-        void pageContent.offsetWidth;
-        doStagger();
-      }, 500);
+/* ── PAGE NAV ── */
+  var writingPage = document.getElementById('writing-page');
+  var writingBack = document.getElementById('writing-back');
+  var cvToWriting = document.getElementById('cv-to-writing');
+  var writingToCV = document.getElementById('writing-to-cv');
+  var navWriting  = document.getElementById('nav-writing');
+  var navCV       = document.getElementById('nav-cv');
+  var navWritingMob = document.getElementById('nav-writing-mob');
+  var navCVMob      = document.getElementById('nav-cv-mob');
+  var hamburger   = document.getElementById('hero-hamburger');
+  var heroMenu    = document.getElementById('hero-menu');
+
+  function goHome() {
+    if (cvPage) { cvPage.style.transition = 'opacity 0.4s ease'; cvPage.style.opacity = '0'; cvPage.style.pointerEvents = 'none'; setTimeout(function(){ cvPage.classList.remove('visible'); cvPage.style.opacity = ''; }, 400); }
+    if (writingPage) { writingPage.style.transition = 'opacity 0.4s ease'; writingPage.style.opacity = '0'; writingPage.style.pointerEvents = 'none'; setTimeout(function(){ writingPage.classList.remove('visible'); writingPage.style.opacity = ''; }, 400); }
+    pageContent.classList.add('ready');
+    void pageContent.offsetWidth;
+    doStagger();
+  }
+
+  function goWriting() {
+    if (cvPage) { cvPage.style.transition = 'opacity 0.4s ease'; cvPage.style.opacity = '0'; cvPage.style.pointerEvents = 'none'; setTimeout(function(){ cvPage.classList.remove('visible'); cvPage.style.opacity = ''; }, 400); }
+    if (writingPage) { writingPage.classList.add('visible'); }
+    if (heroMenu) heroMenu.classList.remove('open');
+  }
+
+  function goCV() {
+    if (writingPage) { writingPage.style.transition = 'opacity 0.4s ease'; writingPage.style.opacity = '0'; writingPage.style.pointerEvents = 'none'; setTimeout(function(){ writingPage.classList.remove('visible'); writingPage.style.opacity = ''; }, 400); }
+    if (cvPage) { cvPage.classList.add('visible'); }
+    if (heroMenu) heroMenu.classList.remove('open');
+  }
+
+  if (navWriting)    navWriting.addEventListener('click', goWriting);
+  if (navCV)         navCV.addEventListener('click', goCV);
+  if (navWritingMob) navWritingMob.addEventListener('click', goWriting);
+  if (navCVMob)      navCVMob.addEventListener('click', goCV);
+  if (writingBack)   writingBack.addEventListener('click', goHome);
+  var cvBack      = document.getElementById('cv-back');
+  var cvToWriting = document.getElementById('cv-to-writing');
+  if (cvToWriting)   cvToWriting.addEventListener('click', goWriting);
+  if (writingToCV)   writingToCV.addEventListener('click', goCV);
+
+  /* Hamburger toggle */
+  if (hamburger && heroMenu) {
+    hamburger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      heroMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      heroMenu.classList.remove('open');
     });
   }
 
